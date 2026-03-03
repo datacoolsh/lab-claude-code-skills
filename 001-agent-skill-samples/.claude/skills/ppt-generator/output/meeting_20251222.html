@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2025-12-22 周例会</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Lora:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/highlight/monokai.css">
+    <style>
+        :root {
+            --anthropic-dark: #141413;
+            --anthropic-light: #faf9f5;
+            --anthropic-mid-gray: #b0aea5;
+            --anthropic-light-gray: #e8e6dc;
+            --anthropic-orange: #d97757;
+            --anthropic-blue: #6a9bcc;
+            --anthropic-green: #788c5d;
+            --font-heading: 'Poppins', Arial, sans-serif;
+            --font-body: 'Lora', Georgia, serif;
+            --font-mono: 'JetBrains Mono', 'Consolas', monospace;
+        }
+        .reveal {
+            font-family: var(--font-body);
+            font-size: 28px;
+            color: var(--anthropic-dark);
+            background-color: var(--anthropic-light);
+        }
+        .reveal .slides { text-align: left; }
+        .reveal h1,.reveal h2,.reveal h3,.reveal h4,.reveal h5,.reveal h6 {
+            font-family: var(--font-heading);
+            font-weight: 600;
+            color: var(--anthropic-dark);
+            margin-bottom: 0.5em;
+            line-height: 1.2;
+            text-transform: none;
+        }
+        .reveal h1 { font-size: 2.6em; }
+        .reveal h2 { font-size: 1.8em; margin-top: 0; }
+        .reveal h3 { font-size: 1.4em; }
+        .reveal p { line-height: 1.6; margin-bottom: 0.6em; }
+        .reveal strong,.reveal b { color: var(--anthropic-orange); font-weight: 600; }
+        .reveal em { color: var(--anthropic-mid-gray); }
+        .reveal a { color: var(--anthropic-blue); text-decoration: none; }
+        .reveal a:hover { border-bottom: 2px solid var(--anthropic-blue); }
+        .reveal ul,.reveal ol { margin-left: 1.2em; margin-bottom: 0.8em; }
+        .reveal li { margin-bottom: 0.35em; line-height: 1.5; }
+        .reveal ul li::marker { color: var(--anthropic-orange); }
+        .reveal ol li::marker { color: var(--anthropic-blue); font-weight: 600; }
+        .reveal code {
+            font-family: var(--font-mono);
+            background: var(--anthropic-light-gray);
+            padding: 0.15em 0.35em;
+            border-radius: 4px;
+            color: var(--anthropic-dark);
+            font-size: 0.85em;
+        }
+        .reveal pre {
+            background: var(--anthropic-dark);
+            border-left: 6px solid var(--anthropic-orange);
+            padding: 1em;
+            border-radius: 8px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+            margin: 0.8em 0;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .reveal pre code {
+            background: transparent;
+            color: var(--anthropic-light);
+            padding: 0;
+            font-size: 0.7em;
+            line-height: 1.6;
+            max-height: 460px;
+        }
+        .reveal blockquote {
+            background: var(--anthropic-light-gray);
+            border-left: 5px solid var(--anthropic-blue);
+            padding: 0.8em 1.2em;
+            margin: 0.8em 0;
+            font-style: italic;
+            color: #555;
+            border-radius: 0 6px 6px 0;
+        }
+        .reveal table { border-collapse: collapse; width: 100%; margin: 0.8em 0; font-size: 0.85em; }
+        .reveal th {
+            background: var(--anthropic-orange);
+            color: var(--anthropic-light);
+            font-family: var(--font-heading);
+            font-weight: 600;
+            padding: 0.55em 0.8em;
+            text-align: left;
+        }
+        .reveal td { border-bottom: 1px solid var(--anthropic-light-gray); padding: 0.55em 0.8em; }
+        .reveal tr:nth-child(even) { background: rgba(232,230,220,0.3); }
+        /* 标题页 */
+        .reveal .title-slide {
+            text-align: center;
+            display: flex !important;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+        .reveal .title-slide h1 {
+            font-size: 3em;
+            margin-bottom: 0.2em;
+            border-bottom: none;
+            background: linear-gradient(135deg, var(--anthropic-dark) 0%, #3a3a38 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .reveal .title-slide .subtitle {
+            font-size: 1.3em;
+            color: var(--anthropic-mid-gray);
+            font-family: var(--font-body);
+            margin-bottom: 1.5em;
+            font-weight: 400;
+        }
+        .reveal .title-slide .meta {
+            font-size: 0.85em;
+            color: var(--anthropic-mid-gray);
+            font-family: var(--font-mono);
+            letter-spacing: 0.05em;
+        }
+        .reveal .title-slide .brand-bar,
+        .reveal .end-slide .brand-bar {
+            display: flex; gap: 0; height: 6px; border-radius: 3px;
+            overflow: hidden; margin: 1.5em auto 0; width: 240px;
+        }
+        .reveal .title-slide .brand-bar span:nth-child(1),
+        .reveal .end-slide .brand-bar span:nth-child(1) { flex:1; background: var(--anthropic-orange); }
+        .reveal .title-slide .brand-bar span:nth-child(2),
+        .reveal .end-slide .brand-bar span:nth-child(2) { flex:1; background: var(--anthropic-blue); }
+        .reveal .title-slide .brand-bar span:nth-child(3),
+        .reveal .end-slide .brand-bar span:nth-child(3) { flex:1; background: var(--anthropic-green); }
+        /* 顶部装饰条 */
+        .reveal .slides section { padding-top: 28px; }
+        .reveal .slides section::before {
+            content: ''; position: absolute; top: 0; left: 0;
+            width: 100%; height: 8px; z-index: 10;
+        }
+        .reveal .slides section:nth-child(3n+1)::before { background: var(--anthropic-orange); }
+        .reveal .slides section:nth-child(3n+2)::before { background: var(--anthropic-blue); }
+        .reveal .slides section:nth-child(3n+3)::before { background: var(--anthropic-green); }
+        .reveal .title-slide::before,
+        .reveal .end-slide::before { display: none; }
+        /* 分栏 */
+        .split-layout {
+            display: grid; grid-template-columns: 1fr 1fr;
+            gap: 2em; align-items: start; margin-top: 0.5em;
+        }
+        .split-layout .col {
+            padding: 1em; background: rgba(232,230,220,0.2); border-radius: 8px;
+        }
+        .split-layout .col h3 { font-size: 1.1em; margin-bottom: 0.4em; padding-bottom: 0.3em; }
+        .split-layout .col:first-child h3 { border-bottom: 3px solid var(--anthropic-orange); }
+        .split-layout .col:last-child h3 { border-bottom: 3px solid var(--anthropic-blue); }
+        /* 结束页 */
+        .reveal .end-slide {
+            text-align: center;
+            display: flex !important;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            background: var(--anthropic-dark);
+            color: var(--anthropic-light);
+        }
+        .reveal .end-slide h2 { color: var(--anthropic-light); font-size: 2.5em; margin-bottom: 0.3em; }
+        .reveal .end-slide p { color: var(--anthropic-mid-gray); }
+        .reveal .end-slide .brand-bar { width: 200px; height: 5px; }
+        /* 控件 */
+        .reveal .controls { color: var(--anthropic-orange); }
+        .reveal .progress { color: var(--anthropic-orange); height: 4px; }
+        .reveal .slide-number {
+            color: var(--anthropic-mid-gray);
+            font-family: var(--font-mono);
+            font-size: 0.75em;
+            background: transparent;
+        }
+    </style>
+</head>
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <section class="title-slide">
+                <h1>2025-12-22 周例会</h1>
+                <p class="subtitle">新员工、业务与合规要点</p>
+                <p class="meta">2025-12-22 &nbsp;|&nbsp; Powered by Claude Code</p>
+                <div class="brand-bar"><span></span><span></span><span></span></div>
+            </section>
+
+            <section>
+                <h2>会议基本信息</h2>
+                <ul>
+                    <li class="fragment"><strong>时间</strong>：2025年12月22日（周一）13:38 - 15:16</li>
+                    <li class="fragment"><strong>地点</strong>：绿地铂瑞公馆B座4702</li>
+                    <li class="fragment"><strong>主持人</strong>：温志刚</li>
+                    <li class="fragment"><strong>参会人数</strong>：21人</li>
+                    <li class="fragment"><strong>核心议题</strong>：新员工欢迎、部门架构介绍、工作汇报、合规强调</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>核心决议</h2>
+                <ul>
+                    <li class="fragment"><strong>新员工培养机制</strong>：四位新员工（袁越、徐艺佳、王文璇、龙淑君）入职，要求1-2个月内熟悉业务，半年内独立开展工作</li>
+                    <li class="fragment"><strong>飞书任务管理</strong>：每周在飞书APP上体现任务完成状态，分析未完成原因</li>
+                    <li class="fragment"><strong>健身房启用</strong>：2707员工健身房预计下周投入使用，考虑2026年减肥奖励目标</li>
+                    <li class="fragment"><strong>贸易合规底线</strong>：不了解的事务必须先请示后操作，严禁"先斩后奏"</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>六大部门架构</h2>
+                <table><thead><tr><th>部门</th><th>负责人</th><th>核心职能</th></tr></thead><tbody><tr><td>办公室</td><td>高坤</td><td>任务管理、后勤保障、健身房管理</td></tr><tr><td>融资部</td><td>胡敏</td><td>贷款和供应链金融增量业务</td></tr><tr><td>银行对接低风险业务部</td><td>罗志高</td><td>银票开票/贴现、摆账、云信证</td></tr><tr><td>资产运营业务部</td><td>马龙</td><td>资产运营（目标5000-6000万）</td></tr><tr><td>供应链部</td><td>待明确</td><td>农产品、冻品、科技、有色金属贸易</td></tr><tr><td>信息化管理部</td><td>刘钊杉</td><td>考勤、飞书、共享云端</td></tr></tbody></table>
+            </section>
+
+            <section>
+                <h2>银行业务 — 上周完成</h2>
+                <ul>
+                    <li class="fragment">华夏银行 <strong>3000万</strong> 开票</li>
+                    <li class="fragment">汉口银行 <strong>1.1亿</strong> 鄂港通</li>
+                    <li class="fragment">农商行 <strong>2000万</strong> 银承开票</li>
+                    <li class="fragment">武汉7家新公司调限额</li>
+                    <li class="fragment">贷款对接流程基本走完</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>银行业务 — 本周重点计划</h2>
+                <ul>
+                    <li class="fragment">湖北银行 <strong>6亿</strong> 开贴计划（3家开3亿 + 2家贴3亿）</li>
+                    <li class="fragment">浙商银行两户贴现，每户 <strong>5000万</strong></li>
+                    <li class="fragment">波路梦营业执照 → 基本户变更 → 开票 <strong>5000万</strong>（三步连环）</li>
+                    <li class="fragment">华夏银行两个有效户转股、变基本户</li>
+                    <li class="fragment">锁定众邦银行三家公司额度 ≥ <strong>1500万</strong></li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>资产运营进展</h2>
+                <ul>
+                    <li class="fragment"><strong>年度目标</strong>：5000 - 6000万，已完成 <strong>4000万</strong></li>
+                    <li class="fragment"><strong>孝感桃花驿庄园</strong>：与卓尔联合开发（公司49% / 卓尔51%）</li>
+                    <li class="fragment"><strong>善哲正</strong>：600万贷款预计当日放款</li>
+                    <li class="fragment"><strong>栢莱资产</strong>：贷款开门红1月1日放款</li>
+                    <li class="fragment"><strong>年底冲刺</strong>：租出5间空商铺 + 获取一笔有效资产</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>供应链部规划</h2>
+                <ul>
+                    <li class="fragment"><strong>农产品</strong>：玉米、大米、红枣、棉花</li>
+                    <li class="fragment"><strong>冻品</strong>：冻牛肉、冻羊肉、冻鸡肉、冻鸭肉</li>
+                    <li class="fragment"><strong>科技品类</strong>：服务器芯片、计算机、手机</li>
+                    <li class="fragment"><strong>有色金属</strong>：铜、铝、锌</li>
+                    <li class="fragment"><strong>近期计划</strong>：1月引进东北五常大米（可作员工福利）</li>
+                    <li class="fragment"><strong>战略定位</strong>：公司核心部门，匹配供应链金融</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>领导指示要点</h2>
+                <ul>
+                    <li class="fragment"><strong>全面发展</strong>：不仅精通本职，还要了解其他业务板块</li>
+                    <li class="fragment"><strong>贸易合规</strong>：底线要求，不了解的必须先请示</li>
+                    <li class="fragment"><strong>信息时效</strong>：群消息必须及时回复</li>
+                    <li class="fragment"><strong>以师带徒</strong>：新员工培养采用师徒制，以罗志高—孙智鑫为范本</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>关键待办追踪</h2>
+                <table><thead><tr><th>任务</th><th>负责人</th><th>截止时间</th></tr></thead><tbody><tr><td>波路梦营业执照 + 开票5000万</td><td>待明确</td><td>12.22-12.24</td></tr><tr><td>湖北银行6亿开贴</td><td>罗志高</td><td>本周</td></tr><tr><td>善哲正600万放款</td><td>马龙</td><td>12.22当天</td></tr><tr><td>栢莱资产贷款落地</td><td>马龙</td><td>2026.1.1</td></tr><tr><td>年底租出5间商铺</td><td>马龙</td><td>12月底</td></tr><tr><td>渤海银行开户销户</td><td>李绍辉</td><td>本周内</td></tr><tr><td>梳理1月银行及贸易量</td><td>罗志高</td><td>待定</td></tr></tbody></table>
+            </section>
+
+            <section>
+                <h2>建议关注</h2>
+                <ul>
+                    <li class="fragment">波路梦三步连环任务（执照→变更→开票）任一延误将影响5000万开票</li>
+                    <li class="fragment">马龙团队距年度目标差约1000万，年底冲刺压力大</li>
+                    <li class="fragment">湖北银行6亿计划对资金到位时间高度敏感</li>
+                    <li class="fragment">供应链部被定位为"公司核心"，但具体业务进展待进一步跟踪</li>
+                    <li class="fragment">4位新员工的部门分配与师傅安排需尽快明确</li>
+                </ul>
+            </section>
+
+            <section class="end-slide" data-background-color="#141413">
+                <h2>Thank You</h2>
+                <p style="font-size:1.1em;">Powered by Claude Code</p>
+                <div class="brand-bar"><span></span><span></span><span></span></div>
+            </section>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/highlight/highlight.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/markdown/markdown.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
+    <script>
+        Reveal.initialize({
+            width: 1280, height: 720, margin: 0.08,
+            minScale: 0.2, maxScale: 2.0,
+            controls: true, progress: true, center: false,
+            hash: true, slideNumber: 'c/t',
+            transition: 'slide', transitionSpeed: 'default',
+            backgroundTransition: 'fade',
+            keyboard: true, overview: true, touch: true,
+            fragments: true, fragmentInURL: false,
+            autoSlide: 0, mouseWheel: false, showNotes: false,
+            plugins: [RevealHighlight, RevealMarkdown, RevealNotes]
+        });
+        Reveal.addKeyBinding({ keyCode: 72, key: 'H', description: '返回首页' }, function() {
+            Reveal.slide(0);
+        });
+    </script>
+</body>
+</html>

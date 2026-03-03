@@ -1,0 +1,31 @@
+# 临时文件
+tmp/*
+!tmp/.gitkeep
+
+# 生成的 PPT 输出（可选：如果想保留输出文件，注释掉下面这行）
+# output/*
+!output/.gitkeep
+
+# Python 缓存
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# 虚拟环境（如果未来需要）
+.venv/
+venv/
+env/
+
+# IDE 配置
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+desktop.ini

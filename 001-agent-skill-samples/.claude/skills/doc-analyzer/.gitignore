@@ -1,0 +1,25 @@
+# 临时文件目录
+tmp/*
+!tmp/README.md
+
+# Python 缓存
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# 虚拟环境（使用 doc-classifier 的共享环境）
+.venv/
+venv/
+
+# IDE 相关
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# 临时文件（以防放错位置）
+tmp_*.json
+tmp_*.txt
+*.tmp

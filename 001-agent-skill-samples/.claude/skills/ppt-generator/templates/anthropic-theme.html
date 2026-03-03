@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+
+    <!-- Google Fonts - 商务字体 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- Reveal.js Core -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+
+    <!-- Code Highlight Plugin -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/highlight/monokai.css">
+
+    <!-- Business Professional Theme -->
+    <style>
+        :root {
+            /* 商务专业配色 */
+            --primary-dark: #1e3a5f;       /* 深海蓝 - 主色调 */
+            --primary: #2563eb;            /* 品牌蓝 - 强调色 */
+            --primary-light: #3b82f6;      /* 亮蓝 - 悬停状态 */
+            --accent: #0ea5e9;             /* 天蓝 - 点缀色 */
+
+            --text-primary: #1e293b;       /* 主文字 - 深灰 */
+            --text-secondary: #475569;     /* 次要文字 - 中灰 */
+            --text-muted: #94a3b8;         /* 淡化文字 */
+
+            --bg-primary: #ffffff;         /* 主背景 - 纯白 */
+            --bg-secondary: #f8fafc;       /* 次要背景 - 淡灰 */
+            --bg-tertiary: #f1f5f9;        /* 第三背景 */
+
+            --border-light: #e2e8f0;       /* 淡边框 */
+            --border-medium: #cbd5e1;      /* 中等边框 */
+
+            --success: #059669;            /* 成功绿 */
+            --warning: #d97706;            /* 警示橙 */
+            --info: #0891b2;               /* 信息青 */
+
+            /* 字体定义 */
+            --font-heading: 'Noto Sans SC', 'Microsoft YaHei', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-body: 'Noto Sans SC', 'Microsoft YaHei', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', 'Consolas', 'Monaco', monospace;
+
+            /* 间距系统 */
+            --spacing-xs: 0.25rem;
+            --spacing-sm: 0.5rem;
+            --spacing-md: 1rem;
+            --spacing-lg: 1.5rem;
+            --spacing-xl: 2rem;
+            --spacing-2xl: 3rem;
+        }
+
+        /* 基础样式 */
+        .reveal {
+            font-family: var(--font-body);
+            font-size: 30px;
+            color: var(--text-primary);
+            background-color: var(--bg-primary);
+            font-weight: 400;
+            line-height: 1.6;
+        }
+
+        .reveal .slides {
+            text-align: left;
+        }
+
+        .reveal .slides section {
+            padding: 20px 40px;
+        }
+
+        /* 标题样式 */
+        .reveal h1, .reveal h2, .reveal h3,
+        .reveal h4, .reveal h5, .reveal h6 {
+            font-family: var(--font-heading);
+            font-weight: 600;
+            color: var(--primary-dark);
+            margin-bottom: 0.6em;
+            line-height: 1.3;
+            letter-spacing: -0.02em;
+        }
+
+        .reveal h1 {
+            font-size: 2.6em;
+            font-weight: 700;
+            border-bottom: 3px solid var(--primary);
+            padding-bottom: 0.25em;
+            margin-bottom: 0.4em;
+        }
+
+        .reveal h2 {
+            font-size: 1.9em;
+            font-weight: 600;
+            margin-top: 0;
+            color: var(--primary-dark);
+        }
+
+        .reveal h2::before {
+            content: '';
+            display: inline-block;
+            width: 4px;
+            height: 0.8em;
+            background: var(--primary);
+            margin-right: 12px;
+            vertical-align: middle;
+            border-radius: 2px;
+        }
+
+        .reveal h3 {
+            font-size: 1.4em;
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+
+        /* 段落和文本 */
+        .reveal p {
+            line-height: 1.7;
+            margin-bottom: 0.8em;
+            color: var(--text-secondary);
+        }
+
+        .reveal strong, .reveal b {
+            color: var(--primary-dark);
+            font-weight: 600;
+        }
+
+        .reveal em, .reveal i {
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        /* 链接 */
+        .reveal a {
+            color: var(--primary);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: all 0.2s ease;
+        }
+
+        .reveal a:hover {
+            color: var(--primary-light);
+            border-bottom-color: var(--primary-light);
+        }
+
+        /* 列表样式 */
+        .reveal ul, .reveal ol {
+            margin-left: 1.2em;
+            margin-bottom: 1em;
+        }
+
+        .reveal li {
+            margin-bottom: 0.5em;
+            line-height: 1.6;
+            color: var(--text-secondary);
+        }
+
+        .reveal ul li::marker {
+            color: var(--primary);
+            font-size: 0.9em;
+        }
+
+        .reveal ol li::marker {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        /* 嵌套列表样式 */
+        .reveal ul ul,
+        .reveal ol ol,
+        .reveal ul ol,
+        .reveal ol ul {
+            margin-top: 0.4em;
+            margin-bottom: 0.4em;
+        }
+
+        /* 代码样式 */
+        .reveal code {
+            font-family: var(--font-mono);
+            background: var(--bg-tertiary);
+            padding: 0.15em 0.4em;
+            border-radius: 4px;
+            color: var(--primary-dark);
+            font-size: 0.85em;
+            border: 1px solid var(--border-light);
+        }
+
+        .reveal pre {
+            background: #1e293b;
+            border-left: 4px solid var(--primary);
+            padding: 1.2em 1.5em;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            margin: 1em 0;
+        }
+
+        .reveal pre code {
+            background: transparent;
+            color: #e2e8f0;
+            padding: 0;
+            font-size: 0.75em;
+            line-height: 1.6;
+            max-height: 500px;
+            overflow: auto;
+            border: none;
+        }
+
+        /* 引用块 */
+        .reveal blockquote {
+            background: var(--bg-secondary);
+            border-left: 4px solid var(--primary);
+            padding: 1em 1.5em;
+            margin: 1em 0;
+            font-style: normal;
+            color: var(--text-secondary);
+            border-radius: 0 6px 6px 0;
+        }
+
+        .reveal blockquote p {
+            margin-bottom: 0;
+        }
+
+        /* 表格 */
+        .reveal table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 1em 0;
+            font-size: 0.9em;
+        }
+
+        .reveal th {
+            background: var(--primary-dark);
+            color: white;
+            font-family: var(--font-heading);
+            font-weight: 600;
+            padding: 0.7em 1em;
+            text-align: left;
+            border-bottom: 2px solid var(--primary);
+        }
+
+        .reveal td {
+            border-bottom: 1px solid var(--border-light);
+            padding: 0.6em 1em;
+            color: var(--text-secondary);
+        }
+
+        .reveal tr:nth-child(even) {
+            background: var(--bg-secondary);
+        }
+
+        .reveal tr:hover {
+            background: var(--bg-tertiary);
+        }
+
+        /* 标题页样式 */
+        .reveal .title-slide {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+        }
+
+        .reveal .title-slide h1 {
+            font-size: 3.2em;
+            margin-bottom: 0.3em;
+            border-bottom: none;
+            color: var(--primary-dark);
+            font-weight: 700;
+        }
+
+        .reveal .title-slide::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+            margin: 0.5em auto 1.5em;
+            border-radius: 2px;
+        }
+
+        .reveal .subtitle {
+            font-size: 1.4em;
+            color: var(--text-secondary);
+            font-family: var(--font-body);
+            margin-bottom: 2em;
+            font-weight: 400;
+        }
+
+        .reveal .meta {
+            font-size: 0.95em;
+            color: var(--text-muted);
+            font-family: var(--font-mono);
+            margin-top: 1em;
+        }
+
+        /* 幻灯片左侧装饰线 */
+        .reveal .slides section:not(.title-slide)::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 0;
+            width: 4px;
+            height: calc(100% - 40px);
+            background: linear-gradient(180deg, var(--primary) 0%, var(--accent) 100%);
+            border-radius: 0 2px 2px 0;
+            opacity: 0.8;
+        }
+
+        /* 标题页不显示装饰线 */
+        .reveal .title-slide::before {
+            display: none;
+        }
+
+        /* 左右分栏布局 */
+        .reveal .split-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5em;
+            align-items: start;
+        }
+
+        .reveal .split-layout .left,
+        .reveal .split-layout .right {
+            padding: 0.5em;
+        }
+
+        /* 卡片样式 */
+        .reveal .card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            padding: 1.2em 1.5em;
+            margin: 0.8em 0;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+
+        .reveal .card-title {
+            font-weight: 600;
+            color: var(--primary-dark);
+            margin-bottom: 0.5em;
+            font-size: 1.1em;
+        }
+
+        /* 高亮文本 */
+        .reveal .highlight {
+            background: linear-gradient(120deg, rgba(37, 99, 235, 0.1) 0%, rgba(14, 165, 233, 0.1) 100%);
+            padding: 0.1em 0.3em;
+            border-radius: 3px;
+        }
+
+        /* Fragment 动画样式 */
+        .reveal .fragment.highlight-current-blue.current-fragment {
+            color: var(--primary);
+        }
+
+        .reveal .fragment.highlight-current-green.current-fragment {
+            color: var(--success);
+        }
+
+        .reveal .fragment.highlight-current-orange.current-fragment {
+            color: var(--warning);
+        }
+
+        /* 控件样式 */
+        .reveal .controls {
+            color: var(--primary);
+        }
+
+        .reveal .controls button {
+            color: var(--primary);
+        }
+
+        .reveal .progress {
+            color: var(--primary);
+            height: 3px;
+            background: var(--border-light);
+        }
+
+        .reveal .progress span {
+            background: var(--primary);
+        }
+
+        .reveal .slide-number {
+            color: var(--text-muted);
+            font-family: var(--font-mono);
+            font-size: 0.75em;
+            background: transparent;
+            padding: 8px 12px;
+        }
+
+        /* 图片样式 */
+        .reveal img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            border: 1px solid var(--border-light);
+        }
+
+        /* 分隔线 */
+        .reveal hr {
+            border: none;
+            border-top: 1px solid var(--border-light);
+            margin: 1.5em 0;
+        }
+
+        /* 页脚区域 */
+        .reveal .footer {
+            position: absolute;
+            bottom: 20px;
+            left: 40px;
+            right: 40px;
+            font-size: 0.65em;
+            color: var(--text-muted);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* 关键数据高亮 */
+        .reveal .metric {
+            text-align: center;
+            padding: 1em;
+        }
+
+        .reveal .metric-value {
+            font-size: 2.5em;
+            font-weight: 700;
+            color: var(--primary);
+            line-height: 1;
+        }
+
+        .reveal .metric-label {
+            font-size: 0.8em;
+            color: var(--text-secondary);
+            margin-top: 0.3em;
+        }
+
+        /* 响应式调整 */
+        @media (max-width: 768px) {
+            .reveal {
+                font-size: 22px;
+            }
+
+            .reveal .split-layout {
+                grid-template-columns: 1fr;
+                gap: 1.5em;
+            }
+
+            .reveal .slides section {
+                padding: 15px 25px;
+            }
+        }
+
+        /* 打印优化 */
+        @media print {
+            .reveal .slides section::before {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="reveal">
+        <div class="slides">
+            {{slides_content}}
+        </div>
+    </div>
+
+    <!-- Reveal.js Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/highlight/highlight.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/markdown/markdown.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
+
+    <script>
+        // Reveal.js 初始化配置
+        Reveal.initialize({
+            // 显示配置
+            width: 1280,
+            height: 720,
+            margin: 0.08,
+            minScale: 0.2,
+            maxScale: 2.0,
+
+            // 控件
+            controls: true,
+            progress: true,
+            center: false,  // 内容左对齐，不居中
+            hash: true,
+            slideNumber: 'c/t',  // 当前页/总页数
+
+            // 过渡效果
+            transition: 'slide',  // none/fade/slide/convex/concave/zoom
+            transitionSpeed: 'default',  // default/fast/slow
+
+            // 背景过渡
+            backgroundTransition: 'fade',
+
+            // 键盘导航
+            keyboard: true,
+            overview: true,
+            touch: true,
+            loop: false,
+            rtl: false,
+
+            // 片段
+            fragments: false,
+            fragmentInURL: false,
+
+            // 自动播放（默认关闭）
+            autoSlide: 0,
+            autoSlideStoppable: true,
+
+            // 鼠标滚轮导航
+            mouseWheel: false,
+
+            // 打开演讲者备注窗口
+            showNotes: false,
+
+            // 插件
+            plugins: [
+                RevealHighlight,
+                RevealMarkdown,
+                RevealNotes
+            ]
+        });
+
+        // 自定义键盘快捷键
+        Reveal.addKeyBinding({
+            keyCode: 72,  // H 键
+            key: 'H',
+            description: '返回首页'
+        }, function() {
+            Reveal.slide(0);
+        });
+
+        // 打印 PDF 时的样式调整
+        if (window.location.search.match(/print-pdf/gi)) {
+            var link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = 'https://cdn.jsdelivr.net/npm/reveal.js@5/css/print/pdf.css';
+            document.getElementsByTagName('head')[0].appendChild(link);
+        }
+    </script>
+</body>
+</html>

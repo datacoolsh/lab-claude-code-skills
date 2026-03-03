@@ -1,0 +1,14 @@
+<!-- 代码展示页布局模板 -->
+<section>
+    {{#title}}
+    <h2>{{title}}</h2>
+    {{/title}}
+    <pre><code class="language-{{language}}" data-trim data-line-numbers="{{line_numbers}}">
+{{code}}
+    </code></pre>
+    {{#caption}}
+    <p style="font-size: 0.8em; color: var(--anthropic-mid-gray); margin-top: 1em;">
+        {{caption}}
+    </p>
+    {{/caption}}
+</section>

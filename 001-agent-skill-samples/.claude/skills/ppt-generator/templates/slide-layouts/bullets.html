@@ -1,0 +1,14 @@
+<!-- 列表页布局模板 -->
+<section>
+    {{#title}}
+    <h2>{{title}}</h2>
+    {{/title}}
+    {{#intro}}
+    <p>{{intro}}</p>
+    {{/intro}}
+    <ul>
+        {{#bullets}}
+        <li class="fragment">{{.}}</li>
+        {{/bullets}}
+    </ul>
+</section>
